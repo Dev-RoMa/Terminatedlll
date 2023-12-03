@@ -1,0 +1,93 @@
+[gd_scene load_steps=16 format=2]
+
+[ext_resource path="res://accesorios/materials/levels/floor_00_ceramic.png" type="Texture" id=1]
+[ext_resource path="res://accesorios/materials/levels/wall_00_wall.jpg" type="Texture" id=2]
+
+[sub_resource type="CubeMesh" id=1]
+
+[sub_resource type="SpatialMaterial" id=2]
+albedo_texture = ExtResource( 1 )
+uv1_scale = Vector3( 100, 1, 100 )
+uv1_triplanar = true
+
+[sub_resource type="BoxShape" id=3]
+
+[sub_resource type="CubeMesh" id=4]
+
+[sub_resource type="SpatialMaterial" id=6]
+albedo_texture = ExtResource( 2 )
+uv1_scale = Vector3( 10, 1, 100 )
+uv1_triplanar = true
+
+[sub_resource type="BoxShape" id=10]
+
+[sub_resource type="SpatialMaterial" id=7]
+albedo_texture = ExtResource( 2 )
+uv1_scale = Vector3( 10, 1, 100 )
+uv1_triplanar = true
+
+[sub_resource type="BoxShape" id=11]
+
+[sub_resource type="CubeMesh" id=5]
+
+[sub_resource type="SpatialMaterial" id=8]
+albedo_texture = ExtResource( 2 )
+uv1_scale = Vector3( 100, 1, 1 )
+uv1_triplanar = true
+
+[sub_resource type="BoxShape" id=12]
+
+[sub_resource type="SpatialMaterial" id=9]
+albedo_texture = ExtResource( 2 )
+uv1_scale = Vector3( 100, 1, 1 )
+uv1_triplanar = true
+
+[sub_resource type="BoxShape" id=13]
+
+[node name="level_0" type="StaticBody"]
+
+[node name="floor_" type="MeshInstance" parent="."]
+transform = Transform( 100, 0, 0, 0, 1, 0, 0, 0, 100, 0, -1, 0 )
+mesh = SubResource( 1 )
+skeleton = NodePath("../..")
+material/0 = SubResource( 2 )
+
+[node name="CollisionShape" type="CollisionShape" parent="."]
+transform = Transform( 100, 0, 0, 0, 1, 0, 0, 0, 100, 0, -1, 0 )
+shape = SubResource( 3 )
+
+[node name="wall_south" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 100, 101, 1, 0 )
+mesh = SubResource( 4 )
+material/0 = SubResource( 6 )
+
+[node name="wall_south_col" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 100, 101, 1, 0 )
+shape = SubResource( 10 )
+
+[node name="wall_north" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 100, -101, 1, 0 )
+mesh = SubResource( 4 )
+material/0 = SubResource( 7 )
+
+[node name="wall_north_col" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 100, -101, 1, 0 )
+shape = SubResource( 11 )
+
+[node name="wall_west" type="MeshInstance" parent="."]
+transform = Transform( 100, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 101 )
+mesh = SubResource( 5 )
+material/0 = SubResource( 8 )
+
+[node name="wall_west_col" type="CollisionShape" parent="."]
+transform = Transform( 100, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 101 )
+shape = SubResource( 12 )
+
+[node name="wall_east" type="MeshInstance" parent="."]
+transform = Transform( 100, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -101 )
+mesh = SubResource( 5 )
+material/0 = SubResource( 9 )
+
+[node name="wall_east_col" type="CollisionShape" parent="."]
+transform = Transform( 100, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -101 )
+shape = SubResource( 13 )
