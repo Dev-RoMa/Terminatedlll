@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://accesorios/levels/0/level_0.tscn" type="PackedScene" id=1]
 [ext_resource path="res://accesorios/player/player.tscn" type="PackedScene" id=2]
+[ext_resource path="res://accesorios/npc/npc_test/npc_test.tscn" type="PackedScene" id=3]
 
 [node name="level" type="Spatial"]
 
@@ -9,3 +10,6 @@
 
 [node name="player" parent="." instance=ExtResource( 2 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0 )
+
+[node name="npc_test" parent="." instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, -40 )

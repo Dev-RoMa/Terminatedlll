@@ -11,8 +11,10 @@ var current_gun = 0
 ##pewing
 #this stuff will spawn the boolet on the scene!!!
 onready var bullet_path = "res://accesorios/projectile/projectile_bullet/projectile_bullet.tscn"
+onready var bullet_sfx = $pew_sfx
 var bullet_instance: RigidBody
 var bullet_location
+onready var pistol_scn = $pistol
 
 var rate_of_fire = 1
 
@@ -63,6 +65,7 @@ func _process(delta):
 
 	#spawn bullet I guess
 	if Input.is_action_just_pressed("pew") && current_gun == 1:
+		bullet_sfx.play()
 		var bullet_scene = load(bullet_path)
 		bullet_instance = bullet_scene.instance()
 		add_child(bullet_instance)
@@ -70,10 +73,12 @@ func _process(delta):
 		bullet_instance.global_transform.origin = bullet_location.global_transform.origin
 		
 	if Input.is_action_just_pressed("1"):
+		pistol_scn.visible = true
 		current_gun = 1
 		print("gun selected", current_gun)
 		
 	elif Input.is_action_just_pressed("2"):
+		pistol_scn.visible = false
 		current_gun = 2
 		print("gun selected", current_gun)
 		
