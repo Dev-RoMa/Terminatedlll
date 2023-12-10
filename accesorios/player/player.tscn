@@ -30,11 +30,20 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, -2 )
 [node name="Timer" type="Timer" parent="."]
 
 [node name="button_exit" type="Button" parent="."]
-margin_left = 982.0
-margin_top = 2.0
-margin_right = 1022.0
-margin_bottom = 33.0
-text = "X"
+pause_mode = 2
+margin_left = 395.0
+margin_top = 331.0
+margin_right = 634.0
+margin_bottom = 378.0
+text = "EXIT"
+
+[node name="button_continue" type="Button" parent="."]
+pause_mode = 2
+margin_left = 395.0
+margin_top = 214.0
+margin_right = 634.0
+margin_bottom = 261.0
+text = "CONTINUE"
 
 [node name="pew_sfx" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource( 2 )
@@ -43,3 +52,4 @@ stream = ExtResource( 2 )
 
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
 [connection signal="pressed" from="button_exit" to="." method="_on_button_exit_pressed"]
+[connection signal="pressed" from="button_continue" to="." method="_on_button_continue_pressed"]

@@ -2,8 +2,8 @@
 
 importer="texture"
 type="StreamTexture"
-path.s3tc="res://.import/y_npc.png-e4f039b41a6f6dc141d36e84a838809e.s3tc.stex"
-path.etc2="res://.import/y_npc.png-e4f039b41a6f6dc141d36e84a838809e.etc2.stex"
+path.s3tc="res://.import/smol.png-50cbddd4c2ed385b0b114d28b32c5f33.s3tc.stex"
+path.etc2="res://.import/smol.png-50cbddd4c2ed385b0b114d28b32c5f33.etc2.stex"
 metadata={
 "imported_formats": [ "s3tc", "etc2" ],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://accesorios/sprites/npc/npc_test/y_npc.png"
-dest_files=[ "res://.import/y_npc.png-e4f039b41a6f6dc141d36e84a838809e.s3tc.stex", "res://.import/y_npc.png-e4f039b41a6f6dc141d36e84a838809e.etc2.stex" ]
+source_file="res://accesorios/sprites/pickups/smol.png"
+dest_files=[ "res://.import/smol.png-50cbddd4c2ed385b0b114d28b32c5f33.s3tc.stex", "res://.import/smol.png-50cbddd4c2ed385b0b114d28b32c5f33.etc2.stex" ]
 
 [params]
 

@@ -15,18 +15,39 @@ onready var bullet_sfx = $pew_sfx
 var bullet_instance: RigidBody
 var bullet_location
 onready var pistol_scn = $pistol
-
 var rate_of_fire = 1
+#node for the gun(S)?
+var node_pistol
 
-##import self stuf
+##UI Stuff
+var button_exit
+var button_continue
 
+##TIMER
 var timer
 
 func _ready():
 	bullet_location = get_node("player_muz")
+	button_exit = $button_exit
+	button_continue = $button_continue
 	timer = get_node("Timer")
+	node_pistol = $pistol
+	
+	##hide ui stuff
+	button_exit.visible = false
+	button_continue.visible = false
+	#hide gun(s)
+	node_pistol.visible = false
+	current_gun = 0
 
 func _process(delta):
+	##PAUSE THE GAME
+	if Input.is_action_just_pressed("esc"):
+		get_tree().paused = true
+		button_exit.visible = true
+		button_continue.visible = true
+	
+	
 	##player movement and rotation
 	#movement
 	if Input.is_action_pressed("ui_up"):
@@ -64,7 +85,8 @@ func _process(delta):
 		rotate_x(rotation_vector.y)
 
 	#spawn bullet I guess
-	if Input.is_action_just_pressed("pew") && current_gun == 1:
+	if Input.is_action_just_pressed("pew") && current_gun == 1 && node_pistol.clip > 0:
+		print("current clip = ",node_pistol.clip)
 		bullet_sfx.play()
 		var bullet_scene = load(bullet_path)
 		bullet_instance = bullet_scene.instance()
@@ -76,13 +98,24 @@ func _process(delta):
 		pistol_scn.visible = true
 		current_gun = 1
 		print("gun selected", current_gun)
+		#print("current clip = ",node_pistol.clip)
 		
 	elif Input.is_action_just_pressed("2"):
 		pistol_scn.visible = false
 		current_gun = 2
 		print("gun selected", current_gun)
+	
+	##debbuging reload
+	if Input.is_action_just_pressed("reload") && current_gun == 1:
+		print("current mags = ",node_pistol.mag)
 		
 
-
 func _on_button_exit_pressed():
-	get_tree().change_scene("res://accesorios/menu/menu.tscn")
+	get_tree().paused = false
+	get_tree().change_scene("res://accesorios/menu/main/menu.tscn")
+
+
+func _on_button_continue_pressed():
+	get_tree().paused = false
+	button_exit.visible = false
+	button_continue.visible = false

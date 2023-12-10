@@ -10,7 +10,7 @@ var sprite_1
 var sprite_2
 var sprite_3
 var sprite_4
-
+var raycast
 
 
 # Called when the node enters the scene tree for the first time.
@@ -23,6 +23,8 @@ func _ready():
 	sprite_3.visible = false
 	sprite_4 = get_node("sprite_4")
 	sprite_4.visible = false
+	##raycast will be the "face" of the npc
+	raycast = get_node("RayCast")
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -41,13 +43,15 @@ func _physics_process(delta):
 	if not is_on_floor():
 		move_and_collide(-global_transform.basis.y.normalized() * gravity * delta)
 
-
+##TO DETECT HITS
 func _on_Area_body_entered(body):
 	#print(body.name) #USE THIS TO DEBUG
 	#hits the npc lowering its hp
 	if body.name =="projectile_bllt":
 		hp -= 10
 		print(hp)
+
+##TO DETECT THE PLAYER THRU AREA
 
 func _change_color():
 	#green
@@ -63,6 +67,12 @@ func _change_color():
 	elif hp == 0:
 		sprite_3.visible = false
 		sprite_4.visible = true
+
+
+
+func _on_Area2_body_entered(body):
+	if body.name == "player":
+		print("player entered npc area")
 
 ##colors
 #colors change with HP

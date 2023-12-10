@@ -1,0 +1,30 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://accesorios/menu/about/about.gd" type="Script" id=1]
+
+[node name="about" type="Control"]
+margin_right = 1023.0
+margin_bottom = 605.0
+script = ExtResource( 1 )
+
+[node name="button_ok" type="Button" parent="."]
+pause_mode = 2
+margin_left = 461.0
+margin_top = 348.0
+margin_right = 567.0
+margin_bottom = 402.0
+text = "OK!?"
+
+[node name="TextEdit" type="TextEdit" parent="."]
+margin_left = 328.0
+margin_top = 187.0
+margin_right = 704.0
+margin_bottom = 321.0
+text = "ITCH IO = https://skc-roma.itch.io/
+
+GITHUB = https://github.com/Dev-RoMa/Terminatedlll
+
+Twitch = https://www.twitch.tv/skc_car"
+readonly = true
+
+[connection signal="pressed" from="button_ok" to="." method="_on_button_ok_pressed"]
