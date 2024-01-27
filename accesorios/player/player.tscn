@@ -28,6 +28,8 @@ far = 300.0
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, -2 )
 
 [node name="Timer" type="Timer" parent="."]
+process_mode = 0
+one_shot = true
 
 [node name="button_exit" type="Button" parent="."]
 pause_mode = 2
@@ -50,6 +52,5 @@ stream = ExtResource( 2 )
 
 [node name="pistol" parent="." instance=ExtResource( 3 )]
 
-[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
 [connection signal="pressed" from="button_exit" to="." method="_on_button_exit_pressed"]
 [connection signal="pressed" from="button_continue" to="." method="_on_button_continue_pressed"]

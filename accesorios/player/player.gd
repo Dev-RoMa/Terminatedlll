@@ -47,7 +47,6 @@ func _process(delta):
 		button_exit.visible = true
 		button_continue.visible = true
 	
-	
 	##player movement and rotation
 	#movement
 	if Input.is_action_pressed("ui_up"):
@@ -84,8 +83,12 @@ func _process(delta):
 		rotate_y(rotation_vector.x)
 		rotate_x(rotation_vector.y)
 
+	##check timer
+	if Input.is_action_just_pressed("pew"):
+		timer.start()
+		
 	#spawn bullet I guess
-	if Input.is_action_just_pressed("pew") && current_gun == 1 && node_pistol.clip > 0:
+	if Input.is_action_just_pressed("pew") && current_gun == 1 && node_pistol.clip > 0 && node_pistol.can_fire == true:
 		print("current clip = ",node_pistol.clip)
 		bullet_sfx.play()
 		var bullet_scene = load(bullet_path)
@@ -93,7 +96,8 @@ func _process(delta):
 		add_child(bullet_instance)
 		bullet_instance.set_as_toplevel(true)
 		bullet_instance.global_transform.origin = bullet_location.global_transform.origin
-		
+	
+	##different weapons
 	if Input.is_action_just_pressed("1"):
 		pistol_scn.visible = true
 		current_gun = 1

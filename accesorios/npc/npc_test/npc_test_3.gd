@@ -6,12 +6,14 @@ var move_direction = Vector3()
 var gravity = 9.8
 var hp = 100
 var speed = 0.001
+#for hp stuff
 var sprite_1
 var sprite_2
 var sprite_3
 var sprite_4
+#look at player?
 var raycast
-
+onready var player = "res://accesorios/player/player.tscn"
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -31,14 +33,16 @@ func _process(delta):
 	#walk the npc forward
 	move_direction -= global_transform.basis.z
 	move_and_slide(move_direction * speed)
-	
 	#dead npc
 	if hp <= 0:
 		speed = 0
 		#print("dead") #TO DEBUG
 	_change_color()
-func _physics_process(delta):
 	
+func _physics_process(delta):
+	#look at player
+	var player_node = get_node("../player")
+	look_at(player_node.global_transform.origin, Vector3.UP)
 	##add gravity lmao
 	if not is_on_floor():
 		move_and_collide(-global_transform.basis.y.normalized() * gravity * delta)
@@ -73,14 +77,3 @@ func _change_color():
 func _on_Area2_body_entered(body):
 	if body.name == "player":
 		print("player entered npc area")
-
-##colors
-#colors change with HP
-# 100 = green
-# 90 - 50 yellow
-# 50 - 20 orange
-# 20 - 0 red
-#var green = "res://accesorios/sprites/npc/npc_test/g_npc.png"
-#var yellow = "res://accesorios/sprites/npc/npc_test/y_npc.png"
-#var orange = "res://accesorios/sprites/npc/npc_test/o_npc.png"
-#var red = "res://accesorios/sprites/npc/npc_test/r_npc.png"
